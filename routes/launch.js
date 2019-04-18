@@ -8,7 +8,13 @@ const router = express.Router();
 router.get('/', async (req, res) => {
   fetch('https://api.spacexdata.com/v3/launches/upcoming', {method : "GET"})
   .then(res => res.json())
-  .then(json => res.render('launches', {json : json, date : json.launch_date_local}));
+  .then(json => res.render('launches', {json : json, launch : 'active'}));
+});
+
+router.get('/all', async (req, res) => {
+  fetch('https://api.spacexdata.com/v3/launches', {method : "GET"})
+  .then(res => res.json())
+  .then(json => res.render('launches', {json : json, allLaunch : 'active'}));
 });
 
 module.exports = router;

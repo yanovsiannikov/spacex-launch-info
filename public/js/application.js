@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const content = document.querySelectorAll('.cont')
+    const content = document.querySelectorAll('.cont');
+    const filtery = document.querySelector('#filter')
+    const filterr = document.querySelector('#filterr')
 
     content.forEach((e) => {
         const date = e.querySelector('.date').textContent
@@ -8,8 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
         var deadline = Number(date)*1000;
         var x = setInterval(function () {
             var now = new Date().getTime();
-            now = Math.floor(now)
-            console.log(now)
             var t = deadline - now;
             var days = Math.floor(t / (1000 * 60 * 60 * 24));
             var hours = Math.floor((t % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -25,5 +25,29 @@ document.addEventListener('DOMContentLoaded', () => {
                 timer.innerHTML = 'LAUNCHED';
             }
         }, 1000);
+    })
+
+    function filtering() {
+        content.forEach((el) => {
+            let r = el.querySelector('.rocket').innerText
+            let y = el.querySelector('.year').innerText
+            if (filtery.value.toLowerCase() === 'all') {
+                if (r.toLowerCase().includes(filterr.value.toLowerCase()))
+                el.style.display = 'inherit';
+                else 
+                el.style.display = 'none';
+            } 
+              else if ((r.toLowerCase().includes(filterr.value.toLowerCase()) && y.startsWith(filtery.value)))
+                    el.style.display = 'inherit';
+                    else 
+                    el.style.display = 'none';
+        })
+    }
+
+    filterr.addEventListener('input', (e) => {
+        filtering()
+    })
+    filtery.addEventListener('input', (e) => {
+        filtering()
     })
 });
