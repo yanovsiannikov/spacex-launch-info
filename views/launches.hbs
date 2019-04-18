@@ -1,0 +1,13 @@
+<script src="/js/launchdate.js"></script>
+{{#each json}}
+<div class="shadow trans cont border m-2 p-3 conteiner mx-auto w-50">
+<p>Year : {{this.launch_year}}</p>
+<p>Mission : {{this.mission_name}}</p>
+<p>Lauch date : {{this.launch_date_local}}</p>
+<p hidden class="date">{{this.launch_date_unix}}</p>
+<p>Rocket : {{this.rocket.rocket_name}}</p>
+<p>Lauch site : {{this.launch_site.site_name_long}}</p>
+<br>
+<p>Countdown - <span class="launch"> </span></p>
+</div>
+{{/each}}

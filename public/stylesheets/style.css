@@ -1,0 +1,7 @@
+.trans {
+    background: rgba(255,255,255,0.5)
+}
+
+.back {
+    background: linear-gradient(to right, rgb(219, 218, 213), rgb(131, 126, 119));
+}
