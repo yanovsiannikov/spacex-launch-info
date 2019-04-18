@@ -4,28 +4,30 @@ const User = require('../models/users')
 
 
 router.route('/login')
-  .get( (req, res) => {
-    res.render('login');
+  .get((req, res) => {
+    res.render('login', {login : 'active'});
   })
   .post(async (req, res) => {
-    const username = req.body.name;
+    const email = req.body.email;
     const password = req.body.password;
 
-    const user = await User.findOne({ username });
+    const user = await User.findOne({ email });
+    const match = await user.comparePassword(password)
     if (!user) {
-      res.redirect('/users/login');
-    } else if (user.password !== password) {
-      res.redirect('/users/login');
+      res.render('login', { message: 'No such user' });
+    } else if
+      (!match) {
+      res.render('login', { message: 'Incorrect Password' });
     } else {
       req.session.user = user;
-      res.redirect('/channels');
+      res.redirect('/');
     }
 
-});
+  });
 
 router.route('/signup')
-  .get( (req, res) => {
-    res.render('signup');
+  .get((req, res) => {
+    res.render('register',{reg : 'active'});
   })
   .post(async (req, res) => {
     try {
@@ -36,33 +38,25 @@ router.route('/signup')
       })
       await user.save();
       req.session.user = user;
-      res.redirect('/channels');
+      res.redirect('/');
     }
     catch (error) {
-      res.redirect('/users/signup');
+      res.render('register', { message: 'Nickname or Email already exists!' });
     };
-});
+  });
 
 router.get('/logout', async (req, res, next) => {
-    if (req.session.user && req.cookies.user_sid) {
-      try {
-        await req.session.destroy();
-        res.redirect('/');
-      }
-      catch (error) {
-        next(error);
-      }
-    } else {
-      res.redirect('/users/login');
+  if (req.session.user && req.cookies.user_sid) {
+    try {
+      await req.session.destroy();
+      res.redirect('/');
     }
-}); 
-
-router.route('/:id')
-  .get(async (req, res, next) => {
-    let channels = await Channel.find({"subscribers" : req.params.id})
-    let cost = channels.reduce((a,b) => {return a + b.cost},0)
-    console.log('test '+cost)
-    res.render('profile', {channels, cost})
-})
+    catch (error) {
+      next(error);
+    }
+  } else {
+    res.redirect('/users/login');
+  }
+});
 
 module.exports = router;

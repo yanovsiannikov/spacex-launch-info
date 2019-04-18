@@ -10,10 +10,11 @@ You can find all needed info in a convenient format.
 - List of upcoming launches with countdown
 - List of All launches (including past)
 - Filter by year and rocket
+- Authorization with encrypt pass
 
 ###### Things to do :
 
-- Auth with user profile
+- User profile
 - Follows to launches
 
 *Optional*
