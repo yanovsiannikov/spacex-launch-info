@@ -12,6 +12,7 @@ You can find all needed info in a convenient format.
 - Filter by year and rocket
 - Authorization with encrypt pass
 - Detail information about past launches
+- Mobile version
 
 ###### Things to do :
 

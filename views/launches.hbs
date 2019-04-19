@@ -14,9 +14,9 @@
     <input class="form-control" id="filterr" type='text' value='Falcon' aria-describedby="basic-addon3">
     </div>
 </div>
-
+<div class='row justify-content-lg-center'>
 {{#each json}}
-<div class="shadow trans cont border m-2 p-3 container mx-auto w-50">
+<div class="shadow trans cont border m-2 p-3 container col-lg-6 align-self-center">
 <p>Year : <span class="year">{{this.launch_year}}</span></p>
 <p>Mission : {{this.mission_name}}</p>
 <p>Lauch date (UTC) : {{this.launch_date_utc}}</p>
@@ -36,7 +36,9 @@
 <p><span class="launch"> </span></p>
 {{#if_eq this.launch_success null}}
 <div class="spinner-border" role="status">
+  </div>
 {{/if_eq}}
-</div>
+
 </div>
 {{/each}}
+</div>
