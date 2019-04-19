@@ -1,4 +1,12 @@
 <div class='container m-2 p-3 mx-auto w-50 trans shadow'>
     <p class='text-center'>Here you can find all information about SpaceX launches
-        <br/>Click <a href='/launches'>Upcoming Events</a> to start!</p>
+        <br/>Check out some information about company below</p>
+</div>
+<div class='container m-2 p-3 mx-auto w-50 trans shadow'>
+    <p>Company name : {{json.name}}</p>
+    <p>Founded in {{json.founded}} by {{json.ceo}}</p>
+    <p>Current CEO and CTO : {{json.ceo}} </p>
+    <p>Employees : {{json.employees}}</p>
+    <p>Headquarters : {{json.headquarters.state}}, {{json.headquarters.city}}, {{json.headquarters.address}}</p>
+    <p>{{json.summary}}</p>
 </div>

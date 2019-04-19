@@ -8,15 +8,8 @@ hbs.registerHelper('if_eq', function (a, b, opts) {
     }
 });
 
-hbs.registerHelper('ifIn', function(elem, list, options) {
-    if(list.indexOf(elem) > -1) {
-      return options.fn(this);
-    }
-    return options.inverse(this);
-  });
-
-hbs.registerHelper('if_not', function (elem, list, opts) {
-    if (list.indexOf(elem) === -1) {
+hbs.registerHelper('if_not', function (a, b, opts) {
+    if (a !== b) {
         return opts.fn(this);
     } else {
         return opts.inverse(this);

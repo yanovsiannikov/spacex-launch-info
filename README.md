@@ -11,6 +11,7 @@ You can find all needed info in a convenient format.
 - List of All launches (including past)
 - Filter by year and rocket
 - Authorization with encrypt pass
+- Detail information about past launches
 
 ###### Things to do :
 

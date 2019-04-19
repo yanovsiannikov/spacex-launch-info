@@ -1,14 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
     const content = document.querySelectorAll('.cont');
-    const filtery = document.querySelector('#filter')
-    const filterr = document.querySelector('#filterr')
+    const filtery = document.querySelector('#filter');
+    const filterr = document.querySelector('#filterr');
 
     content.forEach((e) => {
         const date = e.querySelector('.date').textContent
         const timer = e.querySelector('.launch')
+        const spinner = e.querySelector('.spinner-border')
 
         var deadline = Number(date)*1000;
         var x = setInterval(function () {
+            if (spinner) spinner.remove()
             var now = new Date().getTime();
             var t = deadline - now;
             var days = Math.floor(t / (1000 * 60 * 60 * 24));
@@ -18,11 +20,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if (seconds<10) seconds ='0' + seconds
             if (minutes<10) minutes ='0' + minutes
             if (hours<10) hours ='0' + hours
-            timer.innerHTML = days + " days "
+            timer.innerHTML = 'Countdown : '+days + " days "
                 + hours + ":" + minutes + ":" + seconds;
             if (t < 0) {
                 clearInterval(x);
-                timer.innerHTML = 'LAUNCHED';
+                timer.style.display = 'none';
             }
         }, 1000);
     })

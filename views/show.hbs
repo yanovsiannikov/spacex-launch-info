@@ -1,0 +1,26 @@
+<script src="/js/application.js"></script>
+
+<div class="shadow trans cont border m-2 p-3 container mx-auto w-50">
+<p>Year : <span class="year">{{json.launch_year}}</span></p>
+<p>Mission : {{json.mission_name}}</p>
+<p>Lauch date (UTC) : {{json.launch_date_utc}}</p>
+<p hidden class="date">{{json.launch_date_unix}}</p>
+<p>Rocket : <span style=>{{json.rocket.rocket_name}}</span></p>
+<p>Lauch site : {{json.launch_site.site_name_long}}</p>
+{{#if_eq json.launch_success true}}
+<p>Status : <span style="color : green">Success</span></p>
+{{/if_eq}}
+{{#if_eq json.launch_success false}}
+<p>Status : <span style="color : red">Failure</span></p>
+<p>Reason : {{json.launch_failure_details.reason}}</p>
+<p>Details : {{json.details}}</p>
+{{/if_eq}}
+<h3 class="text center">Launch Video</h3>
+<iframe width=100% height='300px' src='https://www.youtube.com/embed/{{json.links.youtube_id}}' frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+<br>
+<a class="btn btn-secondary" href="javascript:history.back()" role="button">Back</a>
+
+<br>
+<p><span class="launch"> </span></p>
+</div>

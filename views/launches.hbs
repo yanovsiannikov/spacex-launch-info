@@ -19,11 +19,24 @@
 <div class="shadow trans cont border m-2 p-3 container mx-auto w-50">
 <p>Year : <span class="year">{{this.launch_year}}</span></p>
 <p>Mission : {{this.mission_name}}</p>
-<p>Lauch date : {{this.launch_date_local}}</p>
+<p>Lauch date (UTC) : {{this.launch_date_utc}}</p>
 <p hidden class="date">{{this.launch_date_unix}}</p>
-<p>Rocket : <span class='rocket'>{{this.rocket.rocket_name}}</span></p>
+<p>Rocket : <span style=>{{this.rocket.rocket_name}}</span></p>
 <p>Lauch site : {{this.launch_site.site_name_long}}</p>
+{{#if_eq this.launch_success true}}
+<p>Status : <span style="color : green">Success</span></p>
+{{/if_eq}}
+{{#if_eq this.launch_success false}}
+<p>Status : <span style="color : red">Failure</span></p>
+{{/if_eq}}
+{{#if_not this.launch_success null}}
+<a class="btn btn-secondary" href="/launches/{{this.flight_number}}" role="button">More info</a>
+{{/if_not}}
 <br>
-<p>Countdown - <span class="launch"> </span></p>
+<p><span class="launch"> </span></p>
+{{#if_eq this.launch_success null}}
+<div class="spinner-border" role="status">
+{{/if_eq}}
+</div>
 </div>
 {{/each}}
