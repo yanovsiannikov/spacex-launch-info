@@ -1,17 +1,13 @@
 <script src="/js/application.js"></script>
 <div class="d-flex justify-content-center">
     <div class="d-flex">
-    <div class="input-group-prepend">
-    <span class="input-group-text" id="basic-addon3">Filter by year</span>
-  </div>
-    <input class="form-control" maxlength="4" id="filter" type='text' value='All' aria-describedby="basic-addon3">
+
+    <input class="form-control" maxlength="4" id="filter" type='text' placeholder="Filter by year" aria-describedby="basic-addon3">
     </div>
 
     <div class="d-flex">
-    <div class="input-group-prepend">
-    <span class="input-group-text" id="basic-addon3">Filter by rocket name</span>
-  </div>
-    <input class="form-control" id="filterr" type='text' value='Falcon' aria-describedby="basic-addon3">
+
+    <input class="form-control" id="filterr" type='text' placeholder="Filter by Rocket" aria-describedby="basic-addon3">
     </div>
 </div>
 <div class='row justify-content-lg-center'>
@@ -21,7 +17,7 @@
 <p>Mission : {{this.mission_name}}</p>
 <p>Lauch date (UTC) : {{this.launch_date_utc}}</p>
 <p hidden class="date">{{this.launch_date_unix}}</p>
-<p>Rocket : <span style=>{{this.rocket.rocket_name}}</span></p>
+<p>Rocket : <span class="rocket">{{this.rocket.rocket_name}}</span></p>
 <p>Lauch site : {{this.launch_site.site_name_long}}</p>
 {{#if_eq this.launch_success true}}
 <p>Status : <span style="color : green">Success</span></p>
@@ -35,10 +31,8 @@
 <br>
 <p><span class="launch"> </span></p>
 {{#if_eq this.launch_success null}}
-<div class="spinner-border" role="status">
-  </div>
+<div class="spinner-border" role="status"></div>
 {{/if_eq}}
-
 </div>
 {{/each}}
 </div>

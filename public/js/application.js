@@ -33,14 +33,14 @@ document.addEventListener('DOMContentLoaded', () => {
         content.forEach((el) => {
             let r = el.querySelector('.rocket').innerText
             let y = el.querySelector('.year').innerText
-            if (filtery.value.toLowerCase() === 'all') {
+            if (filtery.value.toLowerCase() === '') {
                 if (r.toLowerCase().includes(filterr.value.toLowerCase()))
-                el.style.display = 'inherit';
+                el.style.display = 'block';
                 else 
                 el.style.display = 'none';
             } 
               else if ((r.toLowerCase().includes(filterr.value.toLowerCase()) && y.startsWith(filtery.value)))
-                    el.style.display = 'inherit';
+                    el.style.display = 'block';
                     else 
                     el.style.display = 'none';
         })
