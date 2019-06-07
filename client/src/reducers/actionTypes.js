@@ -1,0 +1,3 @@
+export const GET_ALL_INFO = 'GET_ALL_INFO';
+export const GET_ALL_INFO_SUCCESS = 'GET_ALL_INFO_SUCESS';
+export const GET_ALL_INFO_ERROR = 'GET_ALL_INFO_ERROR';
